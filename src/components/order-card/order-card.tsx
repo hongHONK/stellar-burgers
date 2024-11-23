@@ -13,15 +13,10 @@ import { useDispatch, useSelector } from '../../services/store';
 const maxIngredients = 6;
 
 export const OrderCard: FC<OrderCardProps> = memo(({ order }) => {
-  const dispatch = useDispatch();
   const location = useLocation();
 
   /** TODO: взять переменную из стора */
   const { ingredients } = useSelector(selectIngredients);
-
-  useEffect(() => {
-    if (!ingredients.length) dispatch(getIngredients());
-  }, []);
 
   const orderInfo = useMemo(() => {
     if (!ingredients.length) return null;

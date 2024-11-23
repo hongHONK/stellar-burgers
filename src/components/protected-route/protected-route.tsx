@@ -6,24 +6,28 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '../../services/store';
 import { selectUser } from '../../services/user-slice';
 
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({
+  children,
+  onlyUnAuth = false
+}) => {
   const { isAuthenticated, isAuthChecked } = useSelector(selectUser);
 
   const location = useLocation();
-
-  const isLoginPage = location.pathname === '/login';
-  const isRegisterPage = location.pathname === '/register';
 
   if (!isAuthChecked) {
     return <Preloader />;
   }
 
-  if (isLoginPage || isRegisterPage) {
-    return children;
+  if (onlyUnAuth) {
+    if (!isAuthenticated) {
+      return children;
+    } else {
+      return <Navigate to={location.state || '/profile'} />;
+    }
   }
 
   if (!isAuthenticated) {
-    return <Navigate to={'/login'} />;
+    return <Navigate to={'/login'} state={location.pathname} />;
   }
 
   return children;

@@ -2,13 +2,11 @@ import { FC, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
 import { registerUser, selectUser } from '../../services/user-slice';
-import { Navigate } from 'react-router-dom';
 import { Preloader } from '@ui';
 
 export const Register: FC = () => {
   const dispatch = useDispatch();
-  const { registerUserError, isAuthenticated, userRequest } =
-    useSelector(selectUser);
+  const { registerUserError, userRequest } = useSelector(selectUser);
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,10 +19,6 @@ export const Register: FC = () => {
         registerUser({ name: userName, email: email, password: password })
       );
   };
-
-  if (isAuthenticated) {
-    return <Navigate to={'/profile'} />;
-  }
 
   if (userRequest) {
     return <Preloader />;
