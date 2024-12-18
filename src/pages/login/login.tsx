@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { LoginUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
-import { loginUser, selectUser } from '../../services/user-slice';
+import { loginUser, selectUser } from '../../services/user-slice/user-slice';
 import { Preloader } from '@ui';
 
 export const Login: FC = () => {

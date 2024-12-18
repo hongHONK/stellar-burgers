@@ -21,7 +21,7 @@ import {
 } from '@components';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../services/store';
-import { getUser, selectUser } from '../../services/user-slice';
+import { getUser, selectUser } from '../../services/user-slice/user-slice';
 import { useEffect } from 'react';
 
 const App = () => {
@@ -29,10 +29,10 @@ const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const { isAuthChecked } = useSelector(selectUser);
+  const { isAuthChecked, userRequest } = useSelector(selectUser);
 
   useEffect(() => {
-    if (!isAuthChecked) dispatch(getUser());
+    if (!isAuthChecked && !userRequest) dispatch(getUser());
   }, [isAuthChecked]);
 
   const modalBackgroundLocation: Location | null = location.state?.background;

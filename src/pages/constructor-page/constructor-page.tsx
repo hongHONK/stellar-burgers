@@ -2,7 +2,7 @@ import { useSelector, useDispatch, RootState } from '../../services/store';
 import {
   getIngredients,
   selectIngredients
-} from '../../services/ingredients-slice';
+} from '../../services/ingredients-slice/ingredients-slice';
 
 import styles from './constructor-page.module.css';
 
@@ -19,7 +19,8 @@ export const ConstructorPage: FC = () => {
   const isIngredientsLoading = loading;
 
   useEffect(() => {
-    if (!ingredients.length) dispatch(getIngredients());
+    if (!ingredients.length && !isIngredientsLoading)
+      dispatch(getIngredients());
   }, []);
 
   return (

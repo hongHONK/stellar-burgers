@@ -4,7 +4,7 @@ import { ProtectedRouteProps } from './type';
 import { Preloader } from '@ui';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '../../services/store';
-import { selectUser } from '../../services/user-slice';
+import { selectUser } from '../../services/user-slice/user-slice';
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   children,

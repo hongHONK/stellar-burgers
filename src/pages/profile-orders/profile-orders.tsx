@@ -4,12 +4,12 @@ import { FC, useEffect } from 'react';
 import {
   getProfileFeeds,
   selectProfileOrders
-} from '../../services/orders-feed-slice';
+} from '../../services/orders-feed-slice/orders-feed-slice';
 import { useDispatch, useSelector } from '../../services/store';
 import {
   getIngredients,
   selectIngredients
-} from '../../services/ingredients-slice';
+} from '../../services/ingredients-slice/ingredients-slice';
 
 export const ProfileOrders: FC = () => {
   /** TODO: взять переменную из стора */

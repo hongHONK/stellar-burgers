@@ -6,9 +6,9 @@ import {
   resetOrderModalData,
   selectConstructorItems,
   selectConstructorOrderState
-} from '../../services/constructor-slice';
+} from '../../services/constructor-slice/constructor-slice';
 import { useDispatch, useSelector } from '../../services/store';
-import { selectUser } from '../../services/user-slice';
+import { selectUser } from '../../services/user-slice/user-slice';
 import { useNavigate } from 'react-router-dom';
 
 export const BurgerConstructor: FC = () => {
