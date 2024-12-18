@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
-import { registerUser, selectUser } from '../../services/user-slice';
+import { registerUser, selectUser } from '../../services/user-slice/user-slice';
 import { Preloader } from '@ui';
 
 export const Register: FC = () => {
