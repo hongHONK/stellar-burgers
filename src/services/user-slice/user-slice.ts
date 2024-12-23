@@ -6,10 +6,10 @@ import {
   TLoginData,
   TRegisterData,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
-import { deleteCookie, setCookie } from '../utils/cookie';
+import { deleteCookie, setCookie } from '../../utils/cookie';
 
 type TUserSlice = {
   isAuthChecked: boolean;
@@ -112,6 +112,9 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.data = action.payload.user;
+        state.userRequest = false;
+      })
+      .addCase(updateUser.rejected, (state) => {
         state.userRequest = false;
       })
       .addCase(getUser.pending, (state) => {

@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from '../../services/store';
 import {
   getOrderByNumber,
   selectOrders
-} from '../../services/orders-feed-slice';
+} from '../../services/orders-feed-slice/orders-feed-slice';
 import {
   getIngredients,
   selectIngredients
-} from '../../services/ingredients-slice';
+} from '../../services/ingredients-slice/ingredients-slice';
 import { useParams } from 'react-router-dom';
 
 export const OrderInfo: FC = () => {
